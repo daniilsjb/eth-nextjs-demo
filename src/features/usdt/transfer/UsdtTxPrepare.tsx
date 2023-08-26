@@ -4,8 +4,8 @@ import { useDebouncedValue } from "@mantine/hooks";
 import { IconAt, IconMoneybag } from "@tabler/icons-react";
 import { Button, Container, Group, Text, TextInput } from "@mantine/core";
 
+import { USDT_TRANSFER } from "@/features/usdt/constants";
 import { TxConfig } from "@/features/usdt/transfer/types";
-import { USDT_ABI, USDT_ADDRESS } from "@/features/usdt/constants";
 import { parseAddressOrNull, parseUsdtAmountOrNull } from "@/components/transaction/utils";
 import useVerifyRecipient from "@/components/transaction/use-verify-recipient";
 
@@ -47,16 +47,7 @@ const UsdtTxPrepare = ({ advance }: UsdtTxPrepareProps) => {
     error: _error,
     isLoading: _isLoading,
     isSuccess,
-  } = usePrepareContractWrite(
-    to && value
-      ? {
-          address: USDT_ADDRESS,
-          abi: USDT_ABI,
-          functionName: "transfer",
-          args: [to, value],
-        }
-      : {},
-  );
+  } = usePrepareContractWrite(to && value ? { ...USDT_TRANSFER, args: [to, value] } : {});
 
   const { verifyAsync } = useVerifyRecipient({ address: to });
 

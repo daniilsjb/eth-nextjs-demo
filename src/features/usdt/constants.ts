@@ -380,3 +380,23 @@ export const USDT_ABI = [
   { anonymous: false, inputs: [], name: "Pause", type: "event" },
   { anonymous: false, inputs: [], name: "Unpause", type: "event" },
 ] as const;
+
+export const USDT_CONTRACT = {
+  abi: USDT_ABI,
+  address: USDT_ADDRESS,
+} as const;
+
+export const USDT_APPROVE = {
+  ...USDT_CONTRACT,
+  functionName: "approve",
+} as const;
+
+export const USDT_ALLOWANCE = {
+  ...USDT_CONTRACT,
+  functionName: "allowance",
+} as const;
+
+export const USDT_TRANSFER = {
+  ...USDT_CONTRACT,
+  functionName: "transfer",
+} as const;

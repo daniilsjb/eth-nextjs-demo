@@ -7,23 +7,8 @@ import { notifications } from "@mantine/notifications";
 import { Button, Container, Group, Text, TextInput } from "@mantine/core";
 import { IconAt, IconMoneybag } from "@tabler/icons-react";
 
-import { USDT_ABI, USDT_ADDRESS, USDT_DECIMALS } from "@/features/usdt/constants";
+import { USDT_ALLOWANCE, USDT_APPROVE, USDT_DECIMALS } from "@/features/usdt/constants";
 import { parseAddressOrNull, parseUsdtAmountOrNull } from "@/components/transaction/utils";
-
-const USDT_CONTRACT = {
-  abi: USDT_ABI,
-  address: USDT_ADDRESS,
-} as const;
-
-const USDT_APPROVE = {
-  ...USDT_CONTRACT,
-  functionName: "approve",
-} as const;
-
-const USDT_ALLOWANCE = {
-  ...USDT_CONTRACT,
-  functionName: "allowance",
-} as const;
 
 const showTransactionCancelledNotification = () => {
   notifications.show({
