@@ -1,18 +1,15 @@
-import React from "react";
+import { ReactNode } from "react";
 
 import { EthereumClient, w3mConnectors, w3mProvider } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { sepolia } from "wagmi/chains";
+import { hardhat, mainnet } from "wagmi/chains";
 
+const supportedChains = [mainnet, hardhat];
 const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID;
 
-// This specifies all the EVM chains on which the application is supposed to function.
-// Therefore, they must also be our deployment targets for any custom contracts.
-const chains = [sepolia];
-
-const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
+const { chains, publicClient } = configureChains(supportedChains, [w3mProvider({ projectId })]);
 
 const config = createConfig({
   autoConnect: true,
@@ -22,7 +19,7 @@ const config = createConfig({
 
 const ethereumClient = new EthereumClient(config, chains);
 
-const WagmiProvider = ({ children }: { children: React.ReactNode }) => {
+const EthereumProvider = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <WagmiConfig config={config}>{children}</WagmiConfig>
@@ -31,4 +28,4 @@ const WagmiProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default WagmiProvider;
+export default EthereumProvider;
