@@ -4,8 +4,8 @@
 ![Preview](img/light/preview.png#gh-light-mode-only "Thumbnail")
 
 This is a demonstration showcasing [Next.js](https://nextjs.org/) frontend integration with Ethereum dapps. This
-projects uses [viem](https://viem.sh/) and [wagmi](https://wagmi.sh/) packages for interactions with the blockchain,
-[Web3Modal](https://web3modal.com/) for wallet  connections, and [Mantine](https://mantine.dev/) for UI components.
+project uses [viem](https://viem.sh/) and [wagmi](https://wagmi.sh/) packages for interactions with the blockchain,
+[Web3Modal](https://web3modal.com/) for wallet connections, and [Mantine](https://mantine.dev/) for UI components.
 
 ## Features
 
@@ -21,7 +21,6 @@ projects uses [viem](https://viem.sh/) and [wagmi](https://wagmi.sh/) packages f
 - Supports dark and light themes.
 
 ## Running Locally
-
 
 > **Note**
 > Only Ethereum mainnet and Hardhat test network are supported, due to the dependency on the USDT contract. For testing
